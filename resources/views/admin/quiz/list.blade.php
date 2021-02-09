@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">Anasayfa</x-slot>
+    <x-slot name="header">Quizler</x-slot>
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">
@@ -22,6 +22,8 @@
                             <td>{{ $quiz->status }}</td>
                             <td>{{ $quiz->finished_at }}</td>
                             <td>
+                                <a href="{{ route('questions.index', $quiz->id) }}" class="btn btn-sm btn-warning"><i
+                                        class="fa fa-question"></i></a>
                                 <a href="{{ route('quizzes.edit', $quiz->id) }}" class="btn btn-sm btn-primary"><i
                                         class="fa fa-pen"></i></a>
                                 <a href="{{ route('quizzes.destroy', $quiz->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>
