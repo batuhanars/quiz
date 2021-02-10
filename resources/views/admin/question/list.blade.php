@@ -10,7 +10,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Soru</th>
-                        <th scope="col">Resim</th>
+                        <th scope="col">Fotoğraf</th>
                         <th scope="col">1. Cevap</th>
                         <th scope="col">2. Cevap</th>
                         <th scope="col">3. Cevap</th>
