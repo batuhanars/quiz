@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">{{ $quiz->title }} için yeni soru oluştur</x-slot>
+    <x-slot name="header">{{ $quiz->title }} quizi için yeni soru oluştur</x-slot>
     <div class="card">
         <div class="card-body">
             <form method="post" action="{{ route('questions.store', $quiz->id) }}" enctype="multipart/form-data">
@@ -16,25 +16,25 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="answer1">1. Cevap</label>
-                            <textarea name="answer1" class="form-control" rows="4">{{ old('answer1') }}</textarea>
+                            <textarea name="answer1" class="form-control" rows="2">{{ old('answer1') }}</textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="answer2">2. Cevap</label>
-                            <textarea name="answer2" class="form-control" rows="4">{{ old('answer2') }}</textarea>
+                            <textarea name="answer2" class="form-control" rows="2">{{ old('answer2') }}</textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="answer3">3. Cevap</label>
-                            <textarea name="answer3" class="form-control" rows="4">{{ old('answer3') }}</textarea>
+                            <textarea name="answer3" class="form-control" rows="2">{{ old('answer3') }}</textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="answer4">4. Cevap</label>
-                            <textarea name="answer4" class="form-control" rows="4">{{ old('answer4') }}</textarea>
+                            <textarea name="answer4" class="form-control" rows="2">{{ old('answer4') }}</textarea>
                         </div>
                     </div>
                 </div>

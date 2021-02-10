@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">Quiz Güncelle</x-slot>
+    <x-slot name="header">{{ $quiz->title }} quizini düzenle</x-slot>
     <div class="card">
         <div class="card-body">
             <form method="post" action="{{ route('quizzes.update', $quiz->id) }}">
@@ -19,8 +19,7 @@
                 </div>
                 <div id="finishedInput" @if (!$quiz->finished_at) style="display: none;" @endif class="form-group">
                     <label for="finished_at">Bitiş Tarihi</label>
-                    <input type="datetime-local" name="finished_at" class="form-control"
-                       @if($quiz->finished_at) value="{{ date('Y-m-d\TH:i', strtotime($quiz->finished_at)) }}" @endif>
+                    <input type="datetime-local" name="finished_at" class="form-control" @if ($quiz->finished_at) value="{{ date('Y-m-d\TH:i', strtotime($quiz->finished_at)) }}" @endif>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-success btn-sm btn-block">Quiz Güncelle</button>
