@@ -17,7 +17,7 @@ class Result extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('quiz_id');
-            $table->integer('points');
+            $table->integer('point');
             $table->integer('correct');
             $table->integer('wrong');
             $table->timestamps();
