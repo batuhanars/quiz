@@ -35,15 +35,32 @@
                         @if ($quiz->details)
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Katılımcı Sayısı
-                                <span
-                                    class="badge badge-secondary badge-pill">{{ $quiz->details['join_count'] }}</span>
+                                <span class="badge badge-warning badge-pill">{{ $quiz->details['join_count'] }}</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Ortalama Puan
-                                <span class="badge badge-secondary badge-pill">{{ $quiz->details['average'] }}</span>
+                                <span class="badge badge-light badge-pill">{{ $quiz->details['average'] }}</span>
                             </li>
                         @endif
                     </ul>
+                    @if (count($quiz->topTen) > 0)
+                        <div class="mt-3 card">
+                            <div class="card-body">
+                                <h5 class="card-title">İlk 10</h5>
+                                <ul class="list-group">
+                                    @foreach ($quiz->topTen as $result)
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <strong class="h3">{{ $loop->iteration }}.</strong>
+                                            <img class="w-8 h-8 rounded-full"
+                                                src="{{ $result->user->profile_photo_url }}" alt="">
+                                            {{ $result->user->name }}
+                                            <span class="badge badge-success badge-pill">{{ $result->point }}</span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-md-8">
                     {{ $quiz->description }}</p>
