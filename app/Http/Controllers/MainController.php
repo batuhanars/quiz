@@ -47,6 +47,7 @@ class MainController extends Controller
                 $correct += 1;
             }
         }
+
         $point = round((100 / count($quiz->questions)) * $correct);
         $wrong = count($quiz->questions) - $correct;
         Result::create([
