@@ -5,10 +5,10 @@
             <form method="post" action="{{ route('quiz.result', $quiz->slug) }}">
                 @csrf
                 @foreach ($quiz->questions as $question)
-                    <p class="card-text">
-                        <strong>#{{ $loop->iteration }} </strong>
-                        {{ $question->question }}
-                    </p>
+
+                    <strong>#{{ $loop->iteration }} </strong>
+                    {{ $question->question }}
+
                     @if ($question->image)
                         <img src="{{ asset($question->image) }}" style="width: 50%;" class="img-responsive"
                             alt="{{ $question->question }}">
