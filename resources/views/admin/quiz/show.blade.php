@@ -3,30 +3,13 @@
     <div class="card">
         <div class="card-body">
             <p class="card-text">
+            <h5 class="card-title">
+                <a href="{{ route('quizzes.index') }}" class="btn btn-sm btn-secondary">
+                    <i class="fa fa-arrow-left"></i> Quizlere Dön</a>
+            </h5>
             <div class="row">
                 <div class="col-md-4">
                     <ul class="list-group">
-                        @if ($quiz->my_rank)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Sıralama
-                                <span class="badge badge-success badge-pill">#{{ $quiz->my_rank }}</span>
-                            </li>
-                        @endif
-                        @if ($quiz->my_result)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Puan
-                                <span class="badge badge-primary badge-pill">{{ $quiz->my_result->point }}</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Doğru / Yanlış Sayısı
-                                <div class="float-right">
-                                    <span class="badge badge-success badge-pill">{{ $quiz->my_result->correct }}
-                                        Doğru</span>
-                                    <span class="badge badge-danger badge-pill">{{ $quiz->my_result->wrong }}
-                                        Yanlış</span>
-                                </div>
-                            </li>
-                        @endif
                         @if ($quiz->finished_at)
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Son Katılım Tarihi
@@ -59,7 +42,7 @@
                                             <strong class="h5">{{ $loop->iteration }}.</strong>
                                             <img class="w-8 h-8 rounded-full"
                                                 src="{{ $result->user->profile_photo_url }}" alt="">
-                                            <span @if (auth()->user()->id == $result->user_id) class="text-success" @endif>{{ $result->user->name }}</span>
+                                            <span>{{ $result->user->name }}</span>
                                             <span class="badge badge-success badge-pill">{{ $result->point }}</span>
                                         </li>
                                     @endforeach
@@ -70,15 +53,27 @@
                 </div>
                 <div class="col-md-8">
                     {{ $quiz->description }}
-                    @if ($quiz->my_result)
-                        <a href="{{ route('quiz.join', $quiz->slug) }}"
-                            class="btn btn-warning btn-block btn-sm">Quiz'i
-                            Görüntüle</a>
-                    @elseif($quiz->finished_at > now())
-                        <a href="{{ route('quiz.join', $quiz->slug) }}"
-                            class="btn btn-primary btn-block btn-sm">Quiz'e
-                            Katıl</a>
-                    @endif
+                    <table class="table mt-3 table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Ad Soyad</th>
+                                <th scope="col">Puan</th>
+                                <th scope="col">Doğru</th>
+                                <th scope="col">Yanlış</th>
+                                <th scope="col">İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($quiz->results as $result)
+                                <tr>
+                                    <td>{{ $result->user->name }}</td>
+                                    <td>{{ $result->point }}</td>
+                                    <td>{{ $result->correct }}</td>
+                                    <td>{{ $result->wrong }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
             </p>

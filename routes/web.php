@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'IsAdmin'])->prefix('admin')->group(
     function () {
         Route::get('quizzes/{id}', [QuizController::class, 'destroy'])->whereNumber('id')->name('quizzes.destroy');
+        Route::get('quizzes/{id}/details', [QuizController::class, 'show'])->whereNumber('id')->name('quizzes.details');
 
         Route::get('quiz/{quiz_id}/questions/{id}', [QuestionController::class, 'destroy'])->whereNumber('id')->name('questions.destroy');
 
