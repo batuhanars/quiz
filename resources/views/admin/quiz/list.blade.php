@@ -53,9 +53,9 @@
                                         <span class="badge badge-secondary">Süresi dolmuş</span>
                                     @endif
                                     @break
-                                    {{-- @case('passive')
+                                    @case('passive')
                                     <span class="badge badge-danger">Pasif</span>
-                                    @break --}}
+                                    @break
                                     @case('draft')
                                     <span class="badge badge-warning">Taslak</span>
                                     @break
